@@ -9,7 +9,7 @@ use Nette\DI\Configurator;
 use Salamek\Cms\DI\CmsExtension;
 /**
  * Class FaqExtension
- * @package Dravencms\Gallery\DI
+ * @package Dravencms\Faq\DI
  */
 class FaqExtension extends Nette\DI\CompilerExtension
 {
