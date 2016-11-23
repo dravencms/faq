@@ -1,0 +1,7 @@
+{block #content}
+    <div class="page-header"><h1>{_$h1}</h1></div>
+    <p n:isAllowed="faq, edit">
+        <a n:href="Faq:edit" class="btn btn-primary"><i class="fa fa-plus"></i> {_"New faq"}</a>
+    </p>
+    {control gridFaq}
+{/block}

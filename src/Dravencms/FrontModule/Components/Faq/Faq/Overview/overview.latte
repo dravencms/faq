@@ -1,0 +1,27 @@
+<div class="row page-row">
+    <div class="faq-wrapper col-md-8 col-sm-7">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default" n:foreach="$overview AS $faq">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#faq-{$faq->getId()}" aria-expanded="{if $iterator->isFirst()}true{else}false{/if}" class="">
+                            {$faq->getQ()|striptags}
+                        </a>
+                    </h4>
+                </div><!--//pane-heading-->
+                <div id="faq-{$faq->getId()}" class="panel-collapse collapse {if $iterator->isFirst()}in{/if}" aria-expanded="{if $iterator->isFirst()}true{else}false{/if}">
+                    <div class="panel-body">
+                        {$faq->getA()|noescape}
+                    </div><!--//panel-body-->
+                </div><!--//panel-colapse-->
+            </div><!--//panel-->
+        </div><!--//panel-group-->
+    </div><!--//faq-wrapper-->
+    <aside class="page-sidebar  col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1">
+        <section class="widget has-divider">
+            <h3 class="title">Máte dotaz ?</h3>
+            <p>Nenašli jste zde co jste hledali nebo máte dotaz ?</p>
+            <a class="btn btn-theme" href="{plink Cms38:}"><i class="fa fa-paper-plane-o"></i>Kontaktujte nás!</a>
+        </section><!--//widget-->
+    </aside>
+</div>
