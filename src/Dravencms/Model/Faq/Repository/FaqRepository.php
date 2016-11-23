@@ -3,9 +3,9 @@
  * Copyright (C) 2016 Adam Schubert <adam.schubert@sg1-game.net>.
  */
 
-namespace App\Model\Faq\Repository;
+namespace Dravencms\Model\Faq\Repository;
 
-use App\Model\Faq\Entities\Faq;
+use Dravencms\Model\Faq\Entities\Faq;
 use Gedmo\Translatable\TranslatableListener;
 use Kdyby\Doctrine\EntityManager;
 use Nette;

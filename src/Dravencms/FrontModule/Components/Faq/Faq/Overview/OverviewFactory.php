@@ -17,7 +17,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301  USA
  */
-namespace Dravencms\FrontModule\Components\Faq\Faq;
+namespace Dravencms\FrontModule\Components\Faq\Faq\Overview;
 
 use Salamek\Cms\ICmsActionOption;
 

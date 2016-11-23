@@ -1,9 +1,9 @@
 <?php
 
-namespace Dravencms\FrontModule\Components\Faq\Faq;
+namespace Dravencms\FrontModule\Components\Faq\Faq\Overview;
 
 use Dravencms\Components\BaseControl;
-use App\Model\Faq\Repository\FaqRepository;
+use Dravencms\Model\Faq\Repository\FaqRepository;
 use Salamek\Cms\ICmsActionOption;
 
 /**

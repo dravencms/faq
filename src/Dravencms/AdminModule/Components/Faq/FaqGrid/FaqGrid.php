@@ -19,10 +19,10 @@
  * MA 02110-1301  USA
  */
 
-namespace Dravencms\AdminModule\Components\Faq;
+namespace Dravencms\AdminModule\Components\Faq\FaqGrid;
 
 use Dravencms\Components\BaseGridFactory;
-use App\Model\Faq\Repository\FaqRepository;
+use Dravencms\Model\Faq\Repository\FaqRepository;
 use App\Model\Locale\Repository\LocaleRepository;
 use Kdyby\Doctrine\EntityManager;
 use Nette\Application\UI\Control;

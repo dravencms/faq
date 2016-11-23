@@ -17,10 +17,10 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301  USA
  */
-namespace Dravencms\AdminModule\Components\Faq;
+namespace Dravencms\AdminModule\Components\Faq\FaqForm;
 
 
-use App\Model\Faq\Entities\Faq;
+use Dravencms\Model\Faq\Entities\Faq;
 
 interface FaqFormFactory
 {

@@ -7,11 +7,11 @@
 namespace Dravencms\AdminModule\FaqModule;
 
 
-use Dravencms\AdminModule\Components\Faq\FaqFormFactory;
-use Dravencms\AdminModule\Components\Faq\FaqGridFactory;
+use Dravencms\AdminModule\Components\Faq\FaqForm\FaqFormFactory;
+use Dravencms\AdminModule\Components\Faq\FaqGrid\FaqGridFactory;
 use Dravencms\AdminModule\SecuredPresenter;
-use App\Model\Faq\Entities\Faq;
-use App\Model\Faq\Repository\FaqRepository;
+use Dravencms\Model\Faq\Entities\Faq;
+use Dravencms\Model\Faq\Repository\FaqRepository;
 
 /**
  * Description of FaqPresenter

@@ -18,11 +18,11 @@
  * MA 02110-1301  USA
  */
 
-namespace Dravencms\AdminModule\Components\Faq;
+namespace Dravencms\AdminModule\Components\Faq\FaqForm;
 
 use Dravencms\Components\BaseFormFactory;
-use App\Model\Faq\Entities\Faq;
-use App\Model\Faq\Repository\FaqRepository;
+use Dravencms\Model\Faq\Entities\Faq;
+use Dravencms\Model\Faq\Repository\FaqRepository;
 use App\Model\Locale\Repository\LocaleRepository;
 use Kdyby\Doctrine\EntityManager;
 use Nette\Application\UI\Control;
