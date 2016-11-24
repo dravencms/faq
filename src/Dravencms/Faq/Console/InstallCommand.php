@@ -37,12 +37,12 @@ class InstallCommand extends Command
 
             $entityManager->persist($aclResource);
 
-            $aclOperation = new AclOperation($aclResource, 'edit', 'Allows editation of faq');
-            $entityManager->persist($aclOperation);
-            $aclOperation = new AclOperation($aclResource, 'delete', 'Allows deletion of faq');
-            $entityManager->persist($aclOperation);
+            $aclOperationEdit = new AclOperation($aclResource, 'edit', 'Allows editation of faq');
+            $entityManager->persist($aclOperationEdit);
+            $aclOperationDelete = new AclOperation($aclResource, 'delete', 'Allows deletion of faq');
+            $entityManager->persist($aclOperationDelete);
 
-            $adminMenu = new Menu('Faq', ':Admin:Faq:Faq', 'fa-question-circle', $aclOperation);
+            $adminMenu = new Menu('Faq', ':Admin:Faq:Faq', 'fa-question-circle', $aclOperationEdit);
 
             $foundRoot = $adminMenuRepository->getOneByName('Site items');
 
