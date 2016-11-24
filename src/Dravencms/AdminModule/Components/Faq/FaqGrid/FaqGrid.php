@@ -21,18 +21,18 @@
 
 namespace Dravencms\AdminModule\Components\Faq\FaqGrid;
 
-use Dravencms\Components\BaseGridFactory;
+use Dravencms\Components\BaseControl\BaseControl;
+use Dravencms\Components\BaseGrid\BaseGridFactory;
 use Dravencms\Model\Faq\Repository\FaqRepository;
 use Dravencms\Model\Locale\Repository\LocaleRepository;
 use Kdyby\Doctrine\EntityManager;
-use Nette\Application\UI\Control;
 
 /**
  * Description of MapGrid
  *
  * @author Adam Schubert <adam.schubert@sg1-game.net>
  */
-class FaqGrid extends Control
+class FaqGrid extends BaseControl
 {
 
     /** @var BaseGridFactory */

@@ -2,7 +2,7 @@
 
 namespace Dravencms\FrontModule\Components\Faq\Faq\Overview;
 
-use Dravencms\Components\BaseControl;
+use Dravencms\Components\BaseControl\BaseControl;
 use Dravencms\Model\Faq\Repository\FaqRepository;
 use Salamek\Cms\ICmsActionOption;
 

@@ -20,12 +20,12 @@
 
 namespace Dravencms\AdminModule\Components\Faq\FaqForm;
 
-use Dravencms\Components\BaseFormFactory;
+use Dravencms\Components\BaseControl\BaseControl;
+use Dravencms\Components\BaseForm\BaseFormFactory;
 use Dravencms\Model\Faq\Entities\Faq;
 use Dravencms\Model\Faq\Repository\FaqRepository;
 use Dravencms\Model\Locale\Repository\LocaleRepository;
 use Kdyby\Doctrine\EntityManager;
-use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 
 /**
@@ -33,7 +33,7 @@ use Nette\Application\UI\Form;
  *
  * @author Adam Schubert <adam.schubert@sg1-game.net>
  */
-class FaqForm extends Control
+class FaqForm extends BaseControl
 {
     /** @var BaseFormFactory */
     private $baseFormFactory;
