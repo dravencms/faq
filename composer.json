@@ -1,6 +1,6 @@
 {
   "name": "dravencms/faq",
-  "type": "library",
+  "type": "dravencms-package",
   "description": "FAQ module for dravencms",
   "keywords": [
     "dravencms",
@@ -22,6 +22,19 @@
   "autoload": {
     "psr-0": {
       "Dravencms\\": "src/"
+    }
+  },
+  "extra": {
+    "dravencms": {
+      "configuration": {
+        "extensions": {
+          "timeline": "Dravencms\\Faq\\DI\\FaqExtension"
+        }
+      },
+      "scripts": {
+        "post-install": "Dravencms\\Faq\\Script\\PostInstall",
+        "pre-uninstall": "Dravencms\\Faq\\Script\\PreUninstall"
+      }
     }
   }
 }
