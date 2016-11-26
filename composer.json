@@ -28,7 +28,7 @@
     "dravencms": {
       "configuration": {
         "extensions": {
-          "timeline": "Dravencms\\Faq\\DI\\FaqExtension"
+          "faq": "Dravencms\\Faq\\DI\\FaqExtension"
         }
       },
       "scripts": {
