@@ -18,7 +18,7 @@ use Salamek\Cms\Models\ILocale;
  * Class FaqRepository
  * @package App\Model\Faq\Repository
  */
-class FaqRepository implements ICmsComponentRepository
+class FaqRepository
 {
     /** @var \Kdyby\Doctrine\EntityRepository */
     private $faqRepository;
@@ -99,25 +99,5 @@ class FaqRepository implements ICmsComponentRepository
     public function getByActive($isActive = true)
     {
         return $this->faqRepository->findBy(['isActive' => $isActive]);
-    }
-
-    /**
-     * @param string $componentAction
-     * @return ICmsActionOption[]
-     */
-    public function getActionOptions($componentAction)
-    {
-        return null;
-    }
-
-    /**
-     * @param string $componentAction
-     * @param array $parameters
-     * @param ILocale $locale
-     * @return null|CmsActionOption
-     */
-    public function getActionOption($componentAction, array $parameters, ILocale $locale)
-    {
-        return new CmsActionOption('FAQ');
     }
 }

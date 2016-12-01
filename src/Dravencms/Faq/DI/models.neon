@@ -1,1 +1,2 @@
 - Dravencms\Model\Faq\Repository\FaqRepository
+- Dravencms\Model\Faq\Repository\FaqCmsRepository
