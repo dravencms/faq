@@ -1,2 +1,6 @@
 - Dravencms\Model\Faq\Repository\FaqRepository
 - Dravencms\Model\Faq\Repository\FaqCmsRepository
+
+- Dravencms\Model\Faq\Fixtures\AclOperationFixtures
+- Dravencms\Model\Faq\Fixtures\AclResourceFixtures
+- Dravencms\Model\Faq\Fixtures\AdminMenuFixtures
