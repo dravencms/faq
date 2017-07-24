@@ -35,7 +35,7 @@ class FaqCmsRepository implements ICmsComponentRepository
      * @param ILocale $locale
      * @return null|CmsActionOption
      */
-    public function getActionOption($componentAction, array $parameters, ILocale $locale)
+    public function getActionOption($componentAction, array $parameters)
     {
         return new CmsActionOption('FAQ');
     }
