@@ -31,11 +31,12 @@
       "configuration": {
         "extensions": {
           "faq": "Dravencms\\Faq\\DI\\FaqExtension"
+        },
+        "doctrine":{
+          "metadata": {
+            "Dravencms\\Model\\Faq": "%appDir%/../vendor/dravencms/faq/src/Dravencms/Model/Faq"
+          }
         }
-      },
-      "scripts": {
-        "post-install": "Dravencms\\Faq\\Script\\PostInstall",
-        "pre-uninstall": "Dravencms\\Faq\\Script\\PreUninstall"
       }
     }
   }
