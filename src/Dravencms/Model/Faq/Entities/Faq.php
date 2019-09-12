@@ -14,8 +14,9 @@ use Nette;
  * @ORM\Entity(repositoryClass="Gedmo\Sortable\Entity\Repository\SortableRepository")
  * @ORM\Table(name="faqFaq")
  */
-class Faq extends Nette\Object
+class Faq
 {
+    use Nette\SmartObject;
     use Identifier;
     use TimestampableEntity;
 
