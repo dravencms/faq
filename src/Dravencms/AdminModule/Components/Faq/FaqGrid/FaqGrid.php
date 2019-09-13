@@ -23,6 +23,7 @@ namespace Dravencms\AdminModule\Components\Faq\FaqGrid;
 
 use Dravencms\Components\BaseControl\BaseControl;
 use Dravencms\Components\BaseGrid\BaseGridFactory;
+use Dravencms\Locale\CurrentLocaleResolver;
 use Dravencms\Model\Faq\Repository\FaqRepository;
 use Dravencms\Model\Locale\Repository\LocaleRepository;
 use Kdyby\Doctrine\EntityManager;
@@ -47,6 +48,9 @@ class FaqGrid extends BaseControl
     /** @var LocaleRepository */
     private $localeRepository;
 
+    /** @var \Dravencms\Model\Locale\Entities\Locale|null */
+    private $currentLocale;
+
     /**
      * @var array
      */
@@ -59,7 +63,13 @@ class FaqGrid extends BaseControl
      * @param EntityManager $entityManager
      * @param LocaleRepository $localeRepository
      */
-    public function __construct(FaqRepository $faqRepository, BaseGridFactory $baseGridFactory, EntityManager $entityManager, LocaleRepository $localeRepository)
+    public function __construct(
+        FaqRepository $faqRepository,
+        BaseGridFactory $baseGridFactory,
+        EntityManager $entityManager,
+        LocaleRepository $localeRepository,
+        CurrentLocaleResolver $currentLocaleResolver
+    )
     {
         parent::__construct();
 
@@ -67,6 +77,7 @@ class FaqGrid extends BaseControl
         $this->faqRepository = $faqRepository;
         $this->entityManager = $entityManager;
         $this->localeRepository = $localeRepository;
+        $this->currentLocale = $currentLocaleResolver->getCurrentLocale();
     }
 
 
@@ -78,57 +89,43 @@ class FaqGrid extends BaseControl
     {
         $grid = $this->baseGridFactory->create($this, $name);
 
-        $grid->setModel($this->faqRepository->getFaqQueryBuilder());
+        $grid->setDataSource($this->faqRepository->getFaqQueryBuilder());
 
         $grid->addColumnText('q', 'Q')
-            ->setFilterText()
-            ->setSuggestion();
+            ->setSortable()
+            ->setFilterText();
 
-        $grid->addColumnDate('updatedAt', 'Last edit', $this->localeRepository->getLocalizedDateTimeFormat())
+        $grid->addColumnDateTime('updatedAt', 'Last edit')
+            ->setFormat($this->currentLocale->getDateTimeFormat())
+            ->setAlign('center')
             ->setSortable()
             ->setFilterDate();
-        $grid->getColumn('updatedAt')->cellPrototype->class[] = 'center';
 
         $grid->addColumnBoolean('isActive', 'Active');
 
 
         if ($this->presenter->isAllowed('faq', 'edit')) {
-            $grid->addActionHref('edit', 'Upravit')
-                ->setIcon('pencil');
+
+            $grid->addAction('edit', 'Upravit')
+                ->setIcon('pencil')
+                ->setTitle('Upravit')
+                ->setClass('btn btn-xs btn-primary');
         }
 
         if ($this->presenter->isAllowed('faq', 'delete')) {
-            $grid->addActionHref('delete', 'Smazat', 'delete!')
-                ->setCustomHref(function($row){
-                    return $this->link('delete!', $row->getId());
-                })
-                ->setIcon('trash-o')
-                ->setConfirm(function ($row) {
-                    return ['Opravdu chcete smazat faq %s ?', $row->getQ()];
-                });
-
-
-            $operations = ['delete' => 'Smazat'];
-            $grid->setOperation($operations, [$this, 'gridOperationsHandler'])
-                ->setConfirm('delete', 'Opravu chcete smazat %i faq ?');
+            $grid->addAction('delete', '', 'delete!')
+                ->setIcon('trash')
+                ->setTitle('Smazat')
+                ->setClass('btn btn-xs btn-danger ajax')
+                ->setConfirm('Do you really want to delete row %s?', 'identifier');
+            $grid->addGroupAction('Smazat')->onSelect[] = [$this, 'handleDelete'];
         }
-        $grid->setExport();
+        $grid->addExportCsvFiltered('Csv export (filtered)', 'articles_filtered.csv')
+            ->setTitle('Csv export (filtered)');
+        $grid->addExportCsv('Csv export', 'articlesall.csv')
+            ->setTitle('Csv export');
 
         return $grid;
-    }
-
-    /**
-     * @param $action
-     * @param $ids
-     */
-    public function gridOperationsHandler($action, $ids)
-    {
-        switch ($action)
-        {
-            case 'delete':
-                $this->handleDelete($ids);
-                break;
-        }
     }
 
     /**
